@@ -1,15 +1,16 @@
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.restless import APIManager
+from flask.ext.restful import Api
 
 app = Flask(__name__)
 app.config.from_object('todos.settings')
 db = SQLAlchemy(app)
-manager = APIManager(app, flask_sqlalchemy_db=db)
+api = Api(app)
 
 import views
 import models
+import resources
 
-# rest api for todos model
-manager.create_api(models.Todo, methods=['GET', 'POST', 'DELETE'],
-                   url_prefix='/api')
+v1 = '/api/v1.0/todos'
+api.add_resource(resources.TodoListAPI, v1, endpoint='todos')
+api.add_resource(resources.TodoAPI, v1 + '/<int:id>', endpoint='todo')

@@ -1,5 +1,7 @@
 from flask.ext.script import Manager, Shell, Server
 from flask.ext.migrate import MigrateCommand
+from livereload import Server as LiveReloadServer
+
 from todos.app import app, db
 
 manager = Manager(app)
@@ -17,7 +19,14 @@ manager.add_command("shell", Shell(make_context=_make_context))
 
 
 @manager.command
-def db_create():
+def liveserver():
+    server = LiveReloadServer(app)
+    server.watch('todos/')
+    server.serve()
+
+
+@manager.command
+def createdb():
     db.create_all()
 
 

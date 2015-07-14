@@ -1,11 +1,13 @@
-from todos.app import db
+# from flask.ext import restless
+from . import db
 
 
 class Todo(db.Model):
     __tablename__ = 'todos'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
-    completed = db.Column(db.Boolean)
+    done = db.Column(db.Boolean, default=False)
+    description = db.Column(db.String)
 
     def __repr__(self):
-        return "Title: {}, Completed: {}".format(self.title, self.completed)
+        return "Title: {}, Completed: {}".format(self.title, self.done)
