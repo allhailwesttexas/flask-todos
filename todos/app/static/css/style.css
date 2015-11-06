@@ -1,0 +1,47 @@
+body {
+  margin: 0 auto;
+  background: rgba(0, 0, 170, 1);
+  /*text-align: center;*/
+  color: #fff;
+  font-family: "c64", "Courier New", "Helvetica Neue", Helvetica,Arial, sans-serif;
+}
+
+.todo-header {
+  font-size: 80px;
+  font-weight: 100;
+  color: #777;
+  text-align: left;
+}
+
+.new-todo {
+  background: #AFE;
+  width: 450px;
+  font-size: 20px;
+  color: #777;
+  text-align: left;
+  float: left;
+}
+
+.filters {
+  padding-top: 10px;
+  /*text-align: left;*/
+}
+
+.filters > li {
+  display: inline;
+  padding: 10px;
+}
+
+.filters {
+
+}
+
+.todo-item {
+  text-align: left;
+  clear: both;
+}
+
+@font-face {
+  font-family: 'c64';
+  src: url('../fonts/c64.ttf') format('truetype');
+}
